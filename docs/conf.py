@@ -14,6 +14,9 @@ release = '0.0.1'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
+# https://github.com/readthedocs/sphinx_rtd_theme
+import sphinx_rtd_theme
+
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
@@ -27,6 +30,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
+    'sphinx_rtd_theme',
 ]
 
 # https://hawkmoth.readthedocs.io/en/latest/extension.html
@@ -65,7 +69,7 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 # https://www.sphinx-doc.org/en/master/usage/theming.html
-html_theme = "press"
+html_theme = "sphinx_rtd_theme"
 pygments_style = 'monokai'
 
 # Theme options are theme-specific and customize the look and feel of a theme
