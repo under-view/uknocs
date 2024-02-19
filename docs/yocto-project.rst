@@ -1,10 +1,19 @@
 📚 Yocto Project
 ================
 
-.. toctree::
-	:maxdepth: 3
-	:caption: Knowledge
+=========
+Knowledge
+=========
 
 .. toctree::
-	:maxdepth: 3
-	:caption: Examples
+
+	yocto-project/knowledge/overview
+
+========
+Examples
+========
+
+.. toctree::
+	:numbered:
+
+	yocto-project/examples/simple-build
