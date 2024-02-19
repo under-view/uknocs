@@ -12,7 +12,8 @@ project(
 )
 
 docs_src = [
-  'docs/build.rst', 'docs/index.rst',
+  'docs/build.rst', 'docs/index.rst', 'docs/operating-systems.rst',
+  'docs/yocto-project.rst'
 ]
 
 docs_dir = meson.current_source_dir() + '/docs'
