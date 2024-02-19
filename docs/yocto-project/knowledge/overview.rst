@@ -18,8 +18,10 @@ The core YP documentation can be found
 
 https://docs.yoctoproject.org/
 
-You'll more than likely only use the variable glossary
+You'll more than likely only use
 
-https://docs.yoctoproject.org/ref-manual/variables.html
+	* `Variable Glossary`_
+	* `QA Checks`_
 
-
+.. _Variable Glossary: https://docs.yoctoproject.org/ref-manual/variables.html
+.. _QA Checks: https://docs.yoctoproject.org/dev/ref-manual/qa-checks.html
