@@ -4,7 +4,7 @@
 uknocs
 ======
 
-Underview General knowledge & Docs
+Underview knowledge & Docs
 
 .. toctree::
    :maxdepth: 2
@@ -14,7 +14,7 @@ Underview General knowledge & Docs
 
 .. toctree::
    :maxdepth: 2
-   :caption: General Knowledge & Examples
+   :caption: Knowledge & Examples
 
    operating-systems
    yocto-project

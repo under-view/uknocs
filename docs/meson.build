@@ -9,7 +9,7 @@ docs_src = [
 # Yocto Project section specific docs
 docs_src += [
   'docs/yocto-project/knowledge/overview.rst',
-  'docs/yocto-project/examples/simple-build.rst',
+  'docs/yocto-project/examples/getting-started.rst',
 ]
 
 # Operating Systems section specific docs

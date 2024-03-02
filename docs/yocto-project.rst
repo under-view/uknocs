@@ -5,7 +5,7 @@ Knowledge
 ~~~~~~~~~
 
 .. toctree::
-	:maxdepth: 1
+	:maxdepth: 4
 
 	yocto-project/knowledge/overview
 
@@ -13,7 +13,7 @@ Examples
 ~~~~~~~~
 
 .. toctree::
+	:maxdepth: 4
 	:numbered:
-	:maxdepth: 1
 
-	yocto-project/examples/simple-build
+	yocto-project/examples/getting-started
