@@ -156,9 +156,9 @@ are already added.
 	BBFILES ?= ""
 
 	BBLAYERS ?= " \
-	  ${BBPATH}/../meta \
-	  ${BBPATH}/../meta-poky \
-	  ${BBPATH}/../meta-yocto-bsp \
+	  ../meta \
+	  ../meta-poky \
+	  ../meta-yocto-bsp \
 	  "
 
 **BBLAYERS** this variable is utilized by bitbake to decide which layers to parse.
@@ -184,12 +184,12 @@ or with the use of the command ``bitbake-layers add-layer <layer name>``.
 	BBFILES ?= ""
 
 	BBLAYERS ?= " \
-	  ${BBPATH}/../meta \
-	  ${BBPATH}/../meta-poky \
-	  ${BBPATH}/../meta-yocto-bsp \
-	  ${BBPATH}/../meta-openembedded/meta-oe \
-	  ${BBPATH}/../meta-openembedded/meta-python \
-	  ${BBPATH}/../meta-openembedded/meta-networking \
+	  ../meta \
+	  ../meta-poky \
+	  ../meta-yocto-bsp \
+	  ../meta-openembedded/meta-oe \
+	  ../meta-openembedded/meta-python \
+	  ../meta-openembedded/meta-networking \
 	  "
 
 Updating local.conf
@@ -204,9 +204,10 @@ being in reparsed by bitbake.
 
 	$ vim conf/local.conf
 
-	# Add the bellow
-	PARALLEL_MAKE ??= "-j 8"
-	BB_NUMBER_THREADS ??= "8"
+	# Add the bellow replacing 8 with half your CPU cores
+	# Trust you don't want to run into the OOM killer.
+	PARALLEL_MAKE = "-j 8"
+	BB_NUMBER_THREADS = "8"
 
 Generally the variables you care the most about are
 
@@ -233,6 +234,30 @@ See Yocto Project `Variable Glossary`_ for more details.
 		| Number of CPU cores bitbake may used to parse recipes and execute their task.
 		| You may also export variable so that it's viewable by bitbake and will be used
 		| during builds.
+
+Building A System Image
+=======================
+
+.. code-block:: bash
+
+	# Start system image build
+	$ MACHINE="qemux86-64" DISTRO="poky" bitbake core-image-base
+
+	# If something fails due to OOM killer. Clean recipe shared state
+	# cache, manually rebuild and restart system image build.
+	$ MACHINE="qemux86-64" DISTRO="poky" bitbake -c cleansstate llvm
+	$ MACHINE="qemux86-64" DISTRO="poky" bitbake llvm
+
+===============
+Testing In A VM
+===============
+
+.. code-block:: bash
+
+	$ runqemu tmp/deploy/images/qemux86-64/core-image-base-qemux86-64.rootfs.qemuboot.conf \
+		  core-image-base \
+		  slirp \
+		  serialstdio
 
 .. _Yocto Project Build Host Packages: https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html#build-host-packages
 .. _Variable Glossary: https://docs.yoctoproject.org/ref-manual/variables.html
