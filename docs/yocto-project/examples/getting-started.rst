@@ -235,6 +235,14 @@ See Yocto Project `Variable Glossary`_ for more details.
 		| You may also export variable so that it's viewable by bitbake and will be used
 		| during builds.
 
+	* ``DL_DIR (Downloads Directory)``
+		| Folder where linux packages go before being copied into working directory
+		| of a given recipe and compiled.
+
+	* ``SSTATE_DIR (Shared State Cache Directory)``
+		| Folder that stores tarballs that are then used to excelerate future builds.
+		| No need to rebuild something that was already built.
+
 Building A System Image
 =======================
 
