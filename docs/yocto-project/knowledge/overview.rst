@@ -28,6 +28,7 @@ You'll more than likely only use
 
 	* `Variable Glossary`_
 	* `QA Checks`_
+	* `YP Terms`_ (for familiarity with a few terms)
 
 =============
 What is poky?
@@ -51,7 +52,7 @@ To put it simply
 
 Yocto can be broken up into a series of layers. Each layer contains
 BitBake recipes, classes, configs, includes, and sometimes python code
-which is used for building wic system image files. All files are used
+which is used to build wic system image files. All files are used
 to generate the final linux distribution. This distro of course runs on
 your favorite single board computer (SBC).
 
@@ -59,6 +60,10 @@ Layers generally used in every OE project.
 
 	* `openembedded-core/meta`_ (required)
 	* `meta-openembedded/meta-oe`_ (not required)
+
+Image source can be found `intel yocto project and embedded os curriculum`_.
+
+.. image:: ../../pics/oe-layer-stack.png
 
 ================
 What is Bitbake?
@@ -71,8 +76,9 @@ bitbake source code can be found here
 
 https://git.openembedded.org/bitbake/
 
-
 .. _Variable Glossary: https://docs.yoctoproject.org/ref-manual/variables.html
 .. _QA Checks: https://docs.yoctoproject.org/dev/ref-manual/qa-checks.html
+.. _YP Terms: https://docs.yoctoproject.org/ref-manual/terms.html
 .. _openembedded-core/meta: https://git.openembedded.org/openembedded-core/tree/meta
 .. _meta-openembedded/meta-oe: https://git.openembedded.org/meta-openembedded/tree/meta-oe
+.. _intel yocto project and embedded os curriculum: https://www.intel.com/content/dam/www/public/us/en/documents/education/University/yocto-project-and-embedded-os-curriculum.pdf
