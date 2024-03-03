@@ -243,8 +243,15 @@ See Yocto Project `Variable Glossary`_ for more details.
 		| Folder that stores tarballs that are then used to excelerate future builds.
 		| No need to rebuild something that was already built.
 
+	* ``IMAGE_INSTALL``
+		| Variable used by ``PACKAGE_INSTALL`` to select which packages will be installed
+		| int the final system image.
+
 Building A System Image
 =======================
+
+``core-image-base`` is a system image recipe used to give any linux system image
+the core packages it needs to boot.
 
 .. code-block:: bash
 
