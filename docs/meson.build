@@ -10,6 +10,7 @@ docs_src = [
 docs_src += [
   'docs/yocto-project/knowledge/overview.rst',
   'docs/yocto-project/examples/getting-started.rst',
+  'docs/yocto-project/examples/create-custom-layer.rst',
 ]
 
 # Operating Systems section specific docs

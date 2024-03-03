@@ -17,3 +17,4 @@ Examples
 	:numbered:
 
 	yocto-project/examples/getting-started
+	yocto-project/examples/create-custom-layer
