@@ -32,7 +32,7 @@ what a given variable is used for.
 An important variable to ``do_install`` task ``${D}`` (Destination).
 It's usually set to a given recipes ``${WORKDIR}/image`` before being packaged.
 
-Anything files placed in ``${D}`` will go onto the system image in that exact
+Any files placed in ``${D}`` will go onto the system image in that exact
 directory or in a recipes native sysroot (``${WORKDIR}/recipe-sysroot-native``).
 Depending on what the recipe is setup to do.
 

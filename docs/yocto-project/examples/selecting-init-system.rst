@@ -73,6 +73,7 @@ See Yocto Project `Variable Glossary`_ for more details.
 		| In terms on the Yocto project this variable is used by multiple
 		| recipes and classes to specify what actions need to be performed
 		| to support a given linux system image feature.
+		| See `Yocto Project Distro Features`_ for more information.
 
 =====================
 Building System Image
@@ -96,3 +97,4 @@ You should now see systemd in the serial output.
 		  serialstdio
 
 .. _Variable Glossary: https://docs.yoctoproject.org/ref-manual/variables.html
+.. _Yocto Project Distro Features: https://docs.yoctoproject.org/ref-manual/features.html#distro-features
