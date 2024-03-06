@@ -29,12 +29,12 @@ Recipe Core Structure
 Remember to revist the Yocto Project `Variable Glossary`_ if you don't know
 what a given variable is used for.
 
-An important variable to ``do_install`` task ``${D}`` (Destination).
+An important variable to the ``do_install`` task is ``${D}`` (Destination).
 It's usually set to a given recipes ``${WORKDIR}/image`` before being packaged.
 
 Any files placed in ``${D}`` will go onto the system image in that exact
-directory or in a recipes native sysroot (``${WORKDIR}/recipe-sysroot-native``).
-Depending on what the recipe is setup to do.
+directory. It'll also find it's way into another recipes sysroot (``${WORKDIR}/recipe-sysroot-native``)
+or native sysroot (``${WORKDIR}/recipe-sysroot-native``) via the ``DEPENDS`` variable.
 
 .. code-block:: bash
 
