@@ -9,6 +9,7 @@ Knowledge
 
 	yocto-project/knowledge/overview
 	yocto-project/knowledge/recipe-writing
+	yocto-project/knowledge/override-strategies
 
 Examples
 ~~~~~~~~
