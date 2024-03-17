@@ -47,7 +47,7 @@ often better to use bitbake class defined task over writing your own.
 
 #. do_patch
 	| After fetching and unpacking bitbake applies any patch that were
-	| defined in `SRC_URI`.
+	| defined in `SRC_URI`_.
 
 #. do_populate_lic
 	| Writes license information for the recipe that is collected later when the image is constructed.
@@ -101,25 +101,123 @@ Common Variables
 ================
 
 **Pro Tip:** After you pull up a devshell you can see the
-recipe defined variables for each task. Can even see a few
-by just typing ``env`` command inside the devshell.
+recipe defined variables for each task inside of ``${WORKDIR}/tmp``.
 
-Typical variables you'll see utilized in a recipe are
+Can even see a few by just typing ``env`` command inside the devshell.
 
-* **S**
-* **WORKDIR**
-* **LICENSE**
-* **LIC_FILES_CHKSUM**
-* **FILESEXTRAPATHS**
-* **SRC_URI**
-* **DEPENDS**
-* **RDEPENDS**
-* **PACKAGES**
-* **FILES**
-* **INSANE_SKIP**
-* **PROVIDES**
-* **RPROVIDES**
-* **RECIPE_SYSROOT**
-* **RECIPE_SYSROOT_NATIVE**
+Typical variables you'll see/utilized in a recipe are
+
+* S
+	| Source directory to conduct builds out of. Usually either
+	| set to ``S = "${WORKDIR}"`` or ``S = "${WORKDIR}/git"``, but
+	| may litterally be set to anywhere. Still a wise decision to
+	| specify ``${WORKDIR}/some-directory``.
+
+* PN (Package Name)
+	| Set to the file name of the recipe.
+
+* BPN (Base Package Name)
+	| Set to the absolute name of the recipe.
+
+* PV (Package Version)
+	| Set to version of package. If not specified in recipe anything after
+	| the ``_`` (underscore) character in the file name given to recipe
+	| will be used.
+
+* WORKDIR
+	| Set to the working directory of the recipe. Each recipe as a working directory
+	| that contains everything it needs to build software that'll run on target.
+
+* LICENSE
+	| Used to identify any software licenses associated with code.
+	| You may add as many licenses as you want as long as you follow the rules:
+	| Specified in the `LICENSE section of YP variable glossary`_.
+
+* LIC_FILES_CHKSUM
+	| Checksums (usually ``md5sum``) of the files specified in ``LICENSE`` variable.
+
+* FILESEXTRAPATHS
+	| Used by OpenEmbedded build system to specify extra paths to search for
+	| files specified in the `SRC_URI`_ variable for a given recipe.
+
+* SRC_URI
+	| Used by OpenEmbedded build system in the ``do_fetch`` & ``do_patch`` task for a
+	| given recipe to identify the source location of a file or directory.
+
+* DEPENDS (Build Depends)
+	| Specify recipes which provide the package files that are used to build.
+	| The ouput of those packages will either go into ``${WORKDIR}/recipe-sysroot`` or
+	| ``${WORKDIR}/recipes-sysroot-native``.
+	|
+	| **NOTE:**
+	| Anything with the suffix ``-native`` will go into ``${WORKDIR}/recipes-sysroot-native``.
+	| This is useful when your recipe requires commands that aren't architecture specific.
+	| For instance if a recipe builds a project that requires meson. Adding ``meson-native``
+	| will allow recipe to use a build host specific architecture implementation to build project.
+
+* RDEPENDS (Run Depends)
+	| Specify the recipes which provide the package files that are used at runtime (on target).
+
+* PACKAGES
+	| Specify the types of packages the particular recipe provides.
+	| Default list of provided packages for each recipe may be found
+	| in the `PACKAGES section of YP variable glossary`_.
+
+* FILES
+	| Using globing allows developers to break the recipe files located
+	| in ``do_install`` task ``${D}`` into multiple packages.
+	|
+	| **NOTE:**
+	| If you add a new package to PACKAGES you need to specify the package
+	| name in suffix after ``:`` character.
+	|
+	| **EXAMPLE:**
+
+	.. code-block:: bash
+
+		PACKAGES += "mypackage"
+		FILES:mypackage += "${bindir}/*myfile* /opt/random"
+
+* INSANE_SKIP
+	| If you ever have packaging errors or warnings this variable may be utilized to bypass them.
+	| Don't recommend using this unless the situation requires or if you want to move on with development.
+	| See `insane class`_ to see list of
+
+* PROVIDES
+	| Just a list of names. This names are usually what you want a given recipe
+	| to provide. This name can then be used by other recipes at build time to
+	| pull in a given recipes package(s).
+
+* RPROVIDES
+	| Just a list of names.
+
+* RECIPE_SYSROOT
+	| Set to ``${WORKDIR}/recipe-sysroot`` contains architecture specific binaries
+	| to utilize during builds.
+
+* RECIPE_SYSROOT_NATIVE
+	| Set to ``${WORKDIR}/recipe-sysroot-native`` contains build host architecture
+	| specific binaries that a recipe may utlize during builds.
+
+* STAGING_LIBDIR
+	| Set to ``${RECIPE_SYSROOT}/${base_libdir}``. ``base_libdir`` is set based upon value specified
+	| in ``BASE_LIB`` variable usually prefix with ``/usr``. The prefix may vary depending upon recipe
+	| and class included.
+
+* STAGING_INCDIR
+	| Set to ``${RECIPE_SYSROOT}/${includedir}``. ``includedir`` is generally set to ``/usr/include``.
+	| But may vary depending upon recipe and class included.
+
+* STAGING_LIBDIR_NATIVE
+	| Set to ``${RECIPE_SYSROOT_NATIVE}/${base_libdir}``. ``base_libdir`` is set based upon value specified
+	| in ``BASE_LIB`` variable usually prefix with ``/usr``. The prefix may vary depending upon recipe
+	| and class included.
+
+* STAGING_INCDIR_NATIVE
+	| Set to ``${RECIPE_SYSROOT_NATIVE}/${includedir}``. ``includedir`` is generally set to ``/usr/include``.
+	| But may vary depending upon recipe and class included.
 
 .. _SRC_URI: https://docs.yoctoproject.org/bitbake/2.6/bitbake-user-manual/bitbake-user-manual-ref-variables.html#term-SRC_URI
+.. _LICENSE section of YP variable glossary: https://docs.yoctoproject.org/ref-manual/variables.html#term-LICENSE
+.. _PACKAGES section of YP variable glossary: https://docs.yoctoproject.org/ref-manual/variables.html#term-PACKAGES
+.. _insane class: https://docs.yoctoproject.org/ref-manual/classes.html#ref-classes-insane
