@@ -114,10 +114,15 @@ Typical variables you'll see/utilized in a recipe are
 	| specify ``${WORKDIR}/some-directory``.
 
 * PN (Package Name)
-	| Set to the file name of the recipe.
+	| Generally set to the file name of the recipe. So, everything before
+	| ``_`` (underscore) character. If applicable, the `PN`_ variable may
+	| also contains any special suffix or prefix.
+	|
+	| Example:
+	| ${PN}-native
 
 * BPN (Base Package Name)
-	| Set to the absolute name of the recipe.
+	| Set to the file name of the recipe with no special suffix or prefix.
 
 * PV (Package Version)
 	| Set to version of package. If not specified in recipe anything after
@@ -217,6 +222,7 @@ Typical variables you'll see/utilized in a recipe are
 	| Set to ``${RECIPE_SYSROOT_NATIVE}/${includedir}``. ``includedir`` is generally set to ``/usr/include``.
 	| But may vary depending upon recipe and class included.
 
+.. _PN: https://docs.yoctoproject.org/ref-manual/variables.html#term-PN
 .. _SRC_URI: https://docs.yoctoproject.org/bitbake/2.6/bitbake-user-manual/bitbake-user-manual-ref-variables.html#term-SRC_URI
 .. _LICENSE section of YP variable glossary: https://docs.yoctoproject.org/ref-manual/variables.html#term-LICENSE
 .. _PACKAGES section of YP variable glossary: https://docs.yoctoproject.org/ref-manual/variables.html#term-PACKAGES
