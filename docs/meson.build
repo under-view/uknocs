@@ -14,6 +14,7 @@ docs_src = [
 docs_src += [
   'docs/yocto-project/knowledge/overview.rst',
   'docs/yocto-project/knowledge/recipe-writing.rst',
+  'docs/yocto-project/knowledge/bitbake-classes.rst',
   'docs/yocto-project/knowledge/override-strategies.rst',
 ]
 
