@@ -42,6 +42,7 @@ May add bellow to ``$HOME/.gdbinit``.
 	tui enable
 	tui new-layout important {-horizontal src 1 asm 1} 2 status 0 {-horizontal cmd 1 regs 1} 2
 	layout important
+	tui window width regs -25
 	focus cmd
 
 For switching gdb terminal user interface windows.
