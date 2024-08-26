@@ -8,6 +8,7 @@ Knowledge
 	:maxdepth: 1
 
 	operating-systems/knowledge/virtual-address-space
+	operating-systems/knowledge/debug
 
 Examples
 ~~~~~~~~

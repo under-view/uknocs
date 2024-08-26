@@ -35,6 +35,7 @@ docs_src += [
 # Knowledge
 docs_src += [
   'docs/operating-systems/knowledge/virtual-address-space.rst',
+  'docs/operating-systems/knowledge/debug.rst',
 ]
 
 # Examples
