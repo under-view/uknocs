@@ -15,11 +15,12 @@ GDB With Yocto Project SDK
 
 .. code-block:: bash
 
-	$ gdbserver 127.0.0.1:5555 ./<program name>
+	$ gdbserver --multi 127.0.0.1:5555
 
 .. code-block:: bash
 
-	target remote 127.0.0.1:5555
+	set remote exec-file <path to program>
+	target extended-remote 127.0.0.1:5555
 
 Useful when debugging with the yocto project SDK.
 May add bellow to ``$HOME/.gdbinit``.
