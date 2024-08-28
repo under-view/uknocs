@@ -68,3 +68,20 @@ GDB Multi-Threading
 	thread <number> # Switch to thread
 	set schedular-locking on
 	break 120 thread 2
+
+=============
+GDB x Command
+=============
+
+Based on `gdb x command`_.
+
+Displays the memory contents at a given address using the specified format.
+
+.. code-block::
+
+	x [Address expression]
+	x /[Format] [Address expression]
+	x /[Length][Format] [Address expression]
+	x
+
+.. _gdb x command: https://visualgdb.com/gdbreference/commands/x
