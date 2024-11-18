@@ -27,9 +27,13 @@ May add bellow to ``$HOME/.gdbinit``.
 
 .. code-block:: bash
 
-	set sysroot <sysroot path>
-	set solib-absolute-prefix <sysroot path>/usr/lib{32,64}
-	set solib-search-path <sysroot path>/usr/lib{32,64}
+	python
+	import gdb
+	import os
+	gdb.execute('set sysroot ' + os.environ['SDKTARGETSYSROOT'])
+	gdb.execute('set solib-absolute-prefix ' + os.environ['SDKTARGETSYSROOT'] + '/usr/' + os.environ['OECORE_BASELIB'])
+	gdb.execute('set solib-search-path ' + os.environ['SDKTARGETSYSROOT'] + '/usr/' + os.environ['OECORE_BASELIB'])
+	end
 
 =======
 GDB TUI
