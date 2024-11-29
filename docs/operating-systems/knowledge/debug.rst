@@ -30,9 +30,18 @@ May add bellow to ``$HOME/.gdbinit``.
 	python
 	import gdb
 	import os
-	gdb.execute('set sysroot ' + os.environ['SDKTARGETSYSROOT'])
-	gdb.execute('set solib-absolute-prefix ' + os.environ['SDKTARGETSYSROOT'] + '/usr/' + os.environ['OECORE_BASELIB'])
-	gdb.execute('set solib-search-path ' + os.environ['SDKTARGETSYSROOT'] + '/usr/' + os.environ['OECORE_BASELIB'])
+
+	sysroot = os.environ['SDKTARGETSYSROOT']
+
+	solib_search_path = os.environ['SDKTARGETSYSROOT'] + '/usr/' + os.environ['OECORE_BASELIB']
+	solib_search_path += ':' + os.getcwd() + '/build'
+
+	solib_abs_prefix = os.environ['SDKTARGETSYSROOT'] + '/usr/' + os.environ['OECORE_BASELIB']
+	solib_abs_prefix += ':' + os.getcwd() + '/build'
+
+	gdb.execute('set sysroot ' + sysroot)
+	gdb.execute('set solib-absolute-prefix ' + solib_abs_prefix)
+	gdb.execute('set solib-search-path ' + solib_search_path)
 	end
 
 =======
