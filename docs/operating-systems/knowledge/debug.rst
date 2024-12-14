@@ -82,6 +82,23 @@ GDB Multi-Threading
 	set schedular-locking on
 	break 120 thread 2
 
+======================================
+GDB Debug Child Processes (inferior's)
+======================================
+
+More information may be found at `gdb fork docs`_.
+
+.. code-block:: gdb
+
+	set follow-fork-mode child
+	set detach-on-fork off
+	set schedule-multiple on
+
+.. code-block:: bash
+
+	detach inferiors
+	kill inferiors
+
 =============
 GDB x Command
 =============
@@ -98,3 +115,4 @@ Displays the memory contents at a given address using the specified format.
 	x
 
 .. _gdb x command: https://visualgdb.com/gdbreference/commands/x
+.. _gdb fork docs: https://sourceware.org/gdb/current/onlinedocs/gdb.html/Forks.html
