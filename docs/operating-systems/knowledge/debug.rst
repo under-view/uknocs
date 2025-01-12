@@ -42,6 +42,7 @@ May add bellow to ``$HOME/.gdbinit``.
 	gdb.execute('set sysroot ' + sysroot)
 	gdb.execute('set solib-absolute-prefix ' + solib_abs_prefix)
 	gdb.execute('set solib-search-path ' + solib_search_path)
+	gdb.execute('set environment LD_LIBRARY_PATH ' + solib_search_path)
 	end
 
 =======
